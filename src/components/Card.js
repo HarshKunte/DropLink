@@ -9,7 +9,7 @@ function Card({item}) {
 		</div>
 	</div>
 	<div>
-		<img src={item?.images[0]} alt="" className="object-cover w-full h-48 mb-4 " />
+		<img src={item?.image} alt="" className="object-cover w-full h-48 mb-4 " />
 		<h2 className="mb-1 text-xl font-semibold">{item?.title}</h2>
 		
 	</div>
