@@ -22,7 +22,8 @@ function NavBar() {
 				</span>
 				<input type="search" name="Search" placeholder="Search..." className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none  " />
 			</div>
-			<button type="button" className="hidden text-white px-6 py-2 font-semibold rounded md:block bg-bgDarkGreen">Add new link.</button>
+			<label htmlFor="my-modal-3" type="button" className="hidden md:flex items-center text-white px-6 py-2 font-semibold rounded bg-bgDarkGreen">
+			<MdAdd color='white' className='w-5 h-5' />Add new link.</label>
 		</div>
 		
 		<button title="Open menu" type="button" className="w-10 h-10 flex text-white justify-center items-center md:hidden btn rounded-full bg-bgDarkGreen">

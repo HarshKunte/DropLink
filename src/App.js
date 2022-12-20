@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import Group from './pages/Group';
+import Modal from './components/Modal';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       </Routes>
       </div>
     </Router>
+    <Modal/>	
     </div>
   );
 }

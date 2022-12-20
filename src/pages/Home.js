@@ -2,7 +2,7 @@ import React from 'react';
 import AllBookmarks from '../components/AllBookmarks';
 import NavBar from '../components/NavBar';
 function Home() {
-    return ( <div className='px-4 md:px-16 lg:px-36'>
+    return ( <div className='px-4 md:px-16 lg:px-36 text-black'>
 
         <NavBar/>
 
@@ -28,6 +28,9 @@ function Home() {
 </div>
 <AllBookmarks/>
         </div>
+
+
+	
     </div> );
 }
 

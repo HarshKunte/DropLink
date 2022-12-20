@@ -13,7 +13,9 @@ function AllBookmarks() {
         })
     },[])
     return ( 
-        <div>
+        <div className='flex space-x-8'>
+            <Card item={data}/>
+            <Card item={data}/>
             <Card item={data}/>
         </div>
      );
