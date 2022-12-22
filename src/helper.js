@@ -3,7 +3,7 @@ export async function createBookmark(data){
     
     const item = {id:uuid.v1(), ...data}
 
-    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{name:"others", id:0}]}');
+    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}');
     storageData.bookmarks.push(item)
     localStorage.setItem('bookmarks', JSON.stringify(storageData))
 
@@ -11,7 +11,7 @@ export async function createBookmark(data){
 }
 export function getBookmarks(){
 
-    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{}');
+    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}');
 
     return storageData
 }

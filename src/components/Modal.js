@@ -77,10 +77,10 @@ function Modal() {
                 <span className="label-text">Choose group</span>
               </label>
               <select className="select select-bordered" onChange={(e)=>setGroup(e.target.value)}>
-                <option value={{id:0, name:"others"}} selected>Others</option>
+                {/* <option value={{id:0, name:"others"}} selected >Others</option> */}
                 {
                   bookmarks && bookmarks.groups?.length>0 && bookmarks?.groups.map((group)=>(
-                    <option key={group.id} value={{id:group.id, name:group.name}} selected>{group.name}</option>
+                    <option key={group.id} value={{id:group.id, name:group.name}} >{group.name}</option>
                   ))
                 }
               </select>
