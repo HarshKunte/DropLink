@@ -27,6 +27,9 @@ function Modal() {
             const {image, title} = res.data;
             //save data into local storage
             createBookmark({url, image, title, name, group})
+            setName("")
+            setUrl("")
+            modalRef.current.checked = false
             console.log("done");
         })
         .catch(err =>{
