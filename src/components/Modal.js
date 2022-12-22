@@ -2,9 +2,14 @@ import axios from "axios";
 import React, { useContext, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { IoSend } from "react-icons/io5";
+import Context from "../context";
 import { createBookmark } from "../helper";
 
+
 function Modal() {
+  //context
+  const {bookmarks, setBookmarks} = useContext(Context)
+
   //using this to close modal after creating todo
   const modalRef = useRef(false);
 
@@ -72,9 +77,12 @@ function Modal() {
                 <span className="label-text">Choose group</span>
               </label>
               <select className="select select-bordered" onChange={(e)=>setGroup(e.target.value)}>
-                <option value={1} selected>Others</option>
-                <option value={2}>Star Wars</option>
-                <option value={3}>Harry Potter</option>
+                <option value={{id:0, name:"others"}} selected>Others</option>
+                {
+                  bookmarks && bookmarks.groups?.length>0 && bookmarks?.groups.map((group)=>(
+                    <option key={group.id} value={{id:group.id, name:group.name}} selected>{group.name}</option>
+                  ))
+                }
               </select>
             </div>
             <button className="btn mt-5 bg-bgDarkGreen btn-wide w-full">

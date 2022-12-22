@@ -8,9 +8,11 @@ import {
 import Home from './pages/Home';
 import Group from './pages/Group';
 import Modal from './components/Modal';
+import { ContextProvider } from './context';
 
 function App() {
   return (
+    <ContextProvider>
     <div className="App">
        <Router>
     <div className="App font-['Poppins'] text-accent">
@@ -24,6 +26,7 @@ function App() {
     </Router>
     <Modal/>	
     </div>
+    </ContextProvider>
   );
 }
 

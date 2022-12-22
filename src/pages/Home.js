@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import AllBookmarks from '../components/AllBookmarks';
 import NavBar from '../components/NavBar';
+import Context from '../context';
+import { getBookmarks } from '../helper';
 function Home() {
+	const {bookmarks, setBookmarks} = useContext(Context);
+	useEffect(()=>{
+		//fetch bookmarks from localstorage
+		let data = getBookmarks();
+		console.log(data);
+		setBookmarks(data)
+	},[])
     return ( <div className='px-4 md:px-16 lg:px-36 text-black'>
 
         <NavBar/>
