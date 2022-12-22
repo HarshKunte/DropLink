@@ -1,9 +1,9 @@
 import React from 'react';
 function Card({item}) {
-    return ( <div className="flex flex-col max-w-xs p-6 space-y-6 overflow-hidden rounded-lg shadow-md ">
+    return ( <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex flex-col max-w-xs p-6 space-y-6 overflow-hidden rounded-lg shadow-md ">
 	<div className="flex space-x-4">
 		<div className="flex flex-col space-y-1">
-			<a rel="noopener noreferrer" href="#" className="text-md font-semibold">{item.name}</a>
+			<label  className="text-md font-semibold">{item.name}</label>
 		</div>
 	</div>
 	<div>
@@ -12,7 +12,7 @@ function Card({item}) {
 		
 	</div>
 	
-</div> );
+</a> );
 }
 
 export default Card;

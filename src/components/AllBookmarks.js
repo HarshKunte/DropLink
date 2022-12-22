@@ -13,7 +13,7 @@ function AllBookmarks() {
         <div className='flex space-x-8'>
             {
                 bookmarks.bookmarks?.map((data)=>(
-                    <Card item={data}/>
+                    <Card key={data.id} item={data}/>
                 ))
             }
         </div>
