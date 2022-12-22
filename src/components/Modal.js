@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { IoSend } from "react-icons/io5";
 import Context from "../context";
@@ -15,7 +15,7 @@ function Modal() {
 
   //values
   const [url, setUrl] = useState("")
-  const [group, setGroup] = useState(1)
+  const [group, setGroup] = useState({id:0, name:"others"})
   const [name, setName] = useState("")
 
   const submitData = (e)=>{
@@ -77,11 +77,13 @@ function Modal() {
                 <span className="label-text">Choose group</span>
               </label>
               <select className="select select-bordered" onChange={(e)=>setGroup(e.target.value)}>
-                {/* <option value={{id:0, name:"others"}} selected >Others</option> */}
                 {
-                  bookmarks && bookmarks.groups?.length>0 && bookmarks?.groups.map((group)=>(
-                    <option key={group.id} value={{id:group.id, name:group.name}} >{group.name}</option>
-                  ))
+                  bookmarks && bookmarks.groups?.length>0 && bookmarks?.groups.map((group, index)=>{
+                    if(index==0)
+                    return <option key={group.id} value={{id:group.id, name:group.name}} selected >{group.name}</option>
+                    else
+                    return <option key={group.id} value={{id:group.id, name:group.name}} >{group.name}</option>
+                  })
                 }
               </select>
             </div>

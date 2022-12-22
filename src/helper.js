@@ -1,7 +1,8 @@
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid');
+
 export async function createBookmark(data){
     
-    const item = {id:uuid.v1(), ...data}
+    const item = {id:uuidv4(), ...data}
 
     let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}');
     storageData.bookmarks.push(item)
