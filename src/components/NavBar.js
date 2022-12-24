@@ -26,11 +26,11 @@ function NavBar() {
 			<MdAdd color='white' className='w-5 h-5' />Add new link.</label>
 		</div>
 		
-		<button title="Open menu" type="button" className="w-10 h-10 flex text-white justify-center items-center md:hidden btn rounded-full bg-bgDarkGreen">
+		<label  htmlFor="my-modal-3" type="button" className="w-10 h-10 flex text-white justify-center items-center md:hidden  rounded-full bg-bgDarkGreen">
 		<IconContext.Provider value={{ color: "white" }}>
 			<MdAdd color='white' className='w-5 h-5' />
 </IconContext.Provider>
-		</button>
+		</label>
 		
 	</div>
 </header>

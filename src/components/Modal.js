@@ -3,7 +3,8 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { IoSend } from "react-icons/io5";
 import Context from "../context";
-import { createBookmark } from "../helper";
+import { createBookmark, getBookmarks } from "../helper";
+import Loading from "./Loading";
 
 
 function Modal() {
@@ -13,20 +14,25 @@ function Modal() {
   //using this to close modal after creating todo
   const modalRef = useRef(false);
 
-  //values
+  //states
   const [url, setUrl] = useState("")
   const [group, setGroup] = useState({id:0, name:"others"})
   const [name, setName] = useState("")
+  const [submitting, setSubmitting] = useState(false)
 
   const submitData = (e)=>{
     e.preventDefault()
-    
+    setSubmitting(true)
     axios.get(`${process.env.REACT_APP_API_URL}/?key=${process.env.REACT_APP_API_KEY}&q=${url}`)
         .then(res =>{
             console.log(res.data);
             const {image, title} = res.data;
             //save data into local storage
             createBookmark({url, image, title, name, group})
+
+            //fetch data from localstorage and update context
+            setBookmarks(getBookmarks())
+            setSubmitting(false)
             setName("")
             setUrl("")
             modalRef.current.checked = false
@@ -90,8 +96,11 @@ function Modal() {
                 }
               </select>
             </div>
+            
             <button className="btn mt-5 bg-bgDarkGreen btn-wide w-full">
-              Save
+              {
+                submitting ? (<Loading/>) : ("Save")
+              }
             </button>
           </form>
         </div>
