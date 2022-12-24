@@ -10,7 +10,7 @@ function AllBookmarks() {
     const [data, setData] = useState(null)
     
     return ( 
-        <div className='flex space-x-8'>
+        <div className='flex flex-wrap'>
             {
                 bookmarks.bookmarks?.map((data)=>(
                     <Card key={data.id} item={data}/>
