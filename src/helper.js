@@ -25,3 +25,14 @@ export function getBookmarks(){
 
     return storageData
 }
+
+export function createGroup(data){
+    
+    const item = {id:uuidv4(), ...data}
+
+    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}');
+    storageData.groups.push(item)
+    localStorage.setItem('bookmarks', JSON.stringify(storageData))
+
+    return storageData
+}

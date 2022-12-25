@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import Group from './pages/Group';
-import Modal from './components/Modal';
+import BookmarkModal from './components/BookmarkModal';
 import { ContextProvider } from './context';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
       </Routes>
       </div>
     </Router>
-    <Modal/>	
+    <BookmarkModal/>	
     </div>
     </ContextProvider>
   );
