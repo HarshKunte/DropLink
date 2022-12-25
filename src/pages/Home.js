@@ -22,7 +22,7 @@ function Home() {
         <NavBar/>
 
         <div className='mt-10'>
-        <div className="flex items-center -mx-4 overflow-x-auto overflow-y-hidden flex-nowrap w-full">
+        <div className="flex items-center  overflow-x-auto overflow-y-hidden flex-nowrap w-full">
 	<div onClick={()=>changeActiveTab(0)}  className={activeTab==0? `cursor-pointer flex items-center flex-shrink-0 px-5 py-3 space-x-2 border border-b-0 rounded-t-lg` : `cursor-pointer flex items-center flex-shrink-0 px-5 py-3 space-x-2 border-b`}>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
 			<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>

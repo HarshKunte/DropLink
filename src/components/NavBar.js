@@ -22,11 +22,11 @@ function NavBar() {
 				</span>
 				<input type="search" name="Search" placeholder="Search..." className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none  " />
 			</div>
-			<label htmlFor="my-modal-3" type="button" className="hidden md:flex items-center text-white px-6 py-2 font-semibold rounded bg-bgDarkGreen">
+			<label htmlFor="my-modal-3" type="button" className="cursor-pointer hidden md:flex items-center text-white px-6 py-2 font-semibold rounded bg-bgDarkGreen">
 			<MdAdd color='white' className='w-5 h-5' />Add new link.</label>
 		</div>
 		
-		<label  htmlFor="my-modal-3" type="button" className="w-10 h-10 flex text-white justify-center items-center md:hidden  rounded-full bg-bgDarkGreen">
+		<label  htmlFor="my-modal-3" type="button" className="cursor-pointer w-10 h-10 flex text-white justify-center items-center md:hidden  rounded-full bg-bgDarkGreen">
 		<IconContext.Provider value={{ color: "white" }}>
 			<MdAdd color='white' className='w-5 h-5' />
 </IconContext.Provider>
