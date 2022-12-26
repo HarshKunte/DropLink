@@ -1,38 +1,65 @@
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
-export function createBookmark(data){
-    
-    const item = {id:uuidv4(), ...data}
+export function createBookmark(data) {
+  try {
+    const item = { id: uuidv4(), ...data };
 
-    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}');
-    storageData.bookmarks.push(item)
-    localStorage.setItem('bookmarks', JSON.stringify(storageData))
+    let storageData = JSON.parse(
+      localStorage.getItem("bookmarks") ||
+        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+    );
+    storageData.bookmarks.push(item);
+    localStorage.setItem("bookmarks", JSON.stringify(storageData));
 
-    return storageData
+    return { success: true, data: storageData };
+  } catch (error) {
+    return { success: false, error };
+  }
 }
-export function deleteBookmark(itemId){
-    
-    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}');
-    storageData.bookmarks.splice(storageData.bookmarks.findIndex(bookmark => bookmark.id === itemId) , 1)
+export function deleteBookmark(itemId) {
+  try {
+    let storageData = JSON.parse(
+      localStorage.getItem("bookmarks") ||
+        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+    );
+    storageData.bookmarks.splice(
+      storageData.bookmarks.findIndex((bookmark) => bookmark.id === itemId),
+      1
+    );
     console.log(storageData);
-    localStorage.setItem('bookmarks', JSON.stringify(storageData))
+    localStorage.setItem("bookmarks", JSON.stringify(storageData));
 
-    return storageData
+    return { success: true, data: storageData };
+  } catch (error) {
+    return { success: false, error };
+  }
 }
-export function getBookmarks(){
+export function getBookmarks() {
+  try {
+    let storageData = JSON.parse(
+      localStorage.getItem("bookmarks") ||
+        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+    );
 
-    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}');
-
-    return storageData
+    return { success: true, data: storageData };
+  } catch (error) {
+    return { success: false, error };
+  }
 }
 
-export function createGroup(data){
-    
-    const item = {id:uuidv4(), ...data}
+export function createGroup(data) {
+  try {
+    const item = { id: uuidv4(), ...data };
 
-    let storageData = JSON.parse(localStorage.getItem("bookmarks") || '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}');
-    storageData.groups.push(item)
-    localStorage.setItem('bookmarks', JSON.stringify(storageData))
+    let storageData = JSON.parse(
+      localStorage.getItem("bookmarks") ||
+        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+    );
+    storageData.groups.push(item);
+    localStorage.setItem("bookmarks", JSON.stringify(storageData));
 
-    return storageData
+    return { success: true, data: storageData };
+  } catch (error) {
+    return { success: false, error };
+  }
 }

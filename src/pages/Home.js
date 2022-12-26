@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import AllBookmarks from '../components/AllBookmarks';
 import AllGroups from '../components/AllGroups';
 import NavBar from '../components/NavBar';
@@ -9,9 +10,14 @@ function Home() {
 	const [activeTab, setActiveTab] = useState(0);
 	useEffect(()=>{
 		//fetch bookmarks from localstorage
-		let data = getBookmarks();
-		console.log(data);
-		setBookmarks(data)
+		let result = getBookmarks();
+		if(result.success)
+		setBookmarks(result.data)
+		else{
+			console.log(result.error);
+			toast.error("Something went wrong")
+		}
+			
 	},[])
 
 	const changeActiveTab = (id)=>{

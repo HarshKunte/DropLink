@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import Context from "../context";
-import { createBookmark, getBookmarks } from "../helper";
+import { createBookmark, createGroup, getBookmarks } from "../helper";
 import Loading from "./Loading";
 
 
@@ -20,7 +20,24 @@ function GroupModal() {
     e.preventDefault()
     setSubmitting(true)
     
+    //save to local storage
+
+    // passing name as {name} so that in future if more parameters are added
+    // helper function logic need not to be changed.
+    createGroup({name})
     
+    //fetch data from localstorage and update context
+    let result = getBookmarks();
+    if (result.success) {
+      console.log(result.data);
+      setBookmarks(result.data);
+      setSubmitting(false);
+      setName("");
+      modalRef.current.checked = false;
+    } else {
+      console.log(result.error);
+      toast.error("Something went wrong");
+    }
     
   }
 
@@ -50,6 +67,7 @@ function GroupModal() {
               <input
                 type="text"
                 placeholder="Type here"
+                value={name}
                 className="input input-bordered w-full max-w-xs"
                 onChange={(e)=>setName(e.target.value)}
                 required

@@ -6,7 +6,7 @@ function AllBookmarks() {
     console.log(bookmarks);
     
     return ( 
-        <div className='flex flex-wrap py-10 justify-center sm:justify-between'>
+        <div className='flex flex-wrap py-10 justify-center sm:justify-start'>
             {
                 bookmarks.bookmarks?.map((data)=>(
                     <Card key={data.id} item={data}/>

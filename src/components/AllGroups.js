@@ -6,9 +6,10 @@ function AllGroups() {
     return ( 
         <div>
             <div className='p-4 w-full h-10 '>
-            <label htmlFor='group-modal' type="button" className="  btn btn-ghost btn-sm font-bold float-right text-bgDarkGreen">
+            <label htmlFor='group-modal' type="button" className="btn btn-ghost btn-sm font-bold float-right text-bgDarkGreen">
 			<MdAdd color='inherit' className='w-5 h-5' />Create new group</label>
             </div>
+            
         <div className='flex flex-wrap mt-16'>
             <GroupCard/>
             <GroupCard/>

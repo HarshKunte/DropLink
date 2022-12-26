@@ -8,6 +8,7 @@ import {
 import Home from './pages/Home';
 import Group from './pages/Group';
 import BookmarkModal from './components/BookmarkModal';
+import GroupModal from './components/GroupModal';
 import { ContextProvider } from './context';
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
       </Routes>
       </div>
     </Router>
-    <BookmarkModal/>	
+    <BookmarkModal/>
+    <GroupModal/>
     </div>
     </ContextProvider>
   );
