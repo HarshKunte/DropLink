@@ -15,11 +15,12 @@ function Modal() {
 
   //states
   const [url, setUrl] = useState("");
-  const [group, setGroup] = useState({ id: 0, name: "others" });
+  const [group, setGroup] = useState(0);
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const submitData = (e) => {
+    console.log(group.name);
     e.preventDefault();
     setSubmitting(true);
     axios
@@ -94,29 +95,29 @@ function Modal() {
                 <span className="label-text">Choose group</span>
               </label>
               <select
-                className="select select-bordered"
+                className="select select-bordered" defaultValue={group}
                 onChange={(e) => setGroup(e.target.value)}
               >
                 {bookmarks &&
                   bookmarks.groups?.length > 0 &&
-                  bookmarks?.groups.map((group, index) => {
+                  bookmarks?.groups.map((item, index) => {
                     if (index == 0)
                       return (
                         <option
-                          key={group.id}
-                          value={{ id: group.id, name: group.name }}
-                          selected
+                          key={item.id}
+                          value={item.id}
+                          
                         >
-                          {group.name}
+                          {item.name}
                         </option>
                       );
                     else
                       return (
                         <option
-                          key={group.id}
-                          value={{ id: group.id, name: group.name }}
+                          key={item.id}
+                          value={item.id}
                         >
-                          {group.name}
+                          {item.name}
                         </option>
                       );
                   })}

@@ -3,7 +3,6 @@ import Card from './Card';
 import Context from '../context';
 function AllBookmarks() {
     const {bookmarks, setBookmarks} = useContext(Context);
-    console.log(bookmarks);
     
     return ( 
         <div className='flex flex-wrap py-10 justify-center sm:justify-start'>
