@@ -22,10 +22,10 @@ function AllGroups() {
 			<MdAdd color='inherit' className='w-5 h-5' />Create new group</label>
             </div>
             
-        <div className='flex flex-wrap mt-16'>
+        <div className='flex flex-wrap mt-16 justify-evenly md:justify-start'>
         {
             groupData.map((group)=>(
-            <GroupCard item={group}/>
+            <GroupCard key={group.id} item={group}/>
             ))
         }
         </div>

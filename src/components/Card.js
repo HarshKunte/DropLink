@@ -24,7 +24,7 @@ function Card({ item }) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex bg-gradient-to-b from-bgLightGreen flex-col sm:mr-8 mb-7 w-5/6 sm:w-72 lg:w-96  py-4 px-6 space-y-3 overflow-hidden rounded-lg shadow-xl "
+      className="flex bg-gradient-to-b from-bgLightGreen flex-col lg:mr-6 mb-7 w-[45%] sm:w-[45%] lg:w-[30%] xl:w-92 py-2 px-4 lg:py-4 lg:px-6 space-y-1 lg:space-y-3 overflow-hidden rounded-lg shadow-xl "
     >
       <div className="flex space-x-4">
         <div className="flex space-x-1 w-full items-center justify-between">
@@ -43,13 +43,13 @@ function Card({ item }) {
           <img
             src={item?.image}
             alt=""
-            className="object-cover w-full h-48 mb-4 "
+            className="object-cover w-full md:h-36 lg:h-36 xl:h-44 mb-4 "
           />
         ) : (
           <img
             src={Placeholder}
             alt="placeholder image"
-            className="object-contain w-full h-48 mb-4 "
+            className="object-cover w-full md:h-36 lg:h-36 xl:h-44 mb-4 "
           />
         )}
         <h2 className="mb-1 text-xs font-semibold ">{item?.title}</h2>
