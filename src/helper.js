@@ -69,14 +69,13 @@ export function deleteGroup(groupId) {
       localStorage.getItem("bookmarks") ||
         '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
     );
-    storageData.bookmarks.splice(
-      storageData.bookmarks.findIndex((bookmark) => bookmark.group == groupId),
-      1
-    );
-    storageData.groups.splice(
-      storageData.bookmarks.findIndex((group) => group.id == groupId),
-      1
-    );
+    console.log(storageData);
+    let updatedBookmarks = storageData.bookmarks.filter(bookmark => bookmark.group != groupId)
+    let updatedGroups = storageData.groups.filter(group => group.id != groupId)
+    storageData.bookmarks = updatedBookmarks;
+    storageData.groups = updatedGroups;
+
+    console.log(storageData);
     localStorage.setItem("bookmarks", JSON.stringify(storageData));
 
     return { success: true, data: storageData };
