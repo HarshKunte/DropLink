@@ -13,7 +13,7 @@ function GroupCards() {
         return { noOfBookmarks, ...item };
       });
       setGroupData(updatedData);
-    }, []);
+    }, [bookmarks]);
     return ( 
         <div>
       <div className="p-4 w-full h-10 ">

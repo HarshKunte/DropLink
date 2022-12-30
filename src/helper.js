@@ -63,3 +63,26 @@ export function createGroup(data) {
     return { success: false, error };
   }
 }
+export function deleteGroup(groupId) {
+  try {
+    let storageData = JSON.parse(
+      localStorage.getItem("bookmarks") ||
+        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+    );
+    storageData.bookmarks.splice(
+      storageData.bookmarks.findIndex((bookmark) => bookmark.group == groupId),
+      1
+    );
+    storageData.groups.splice(
+      storageData.bookmarks.findIndex((group) => group.id == groupId),
+      1
+    );
+    localStorage.setItem("bookmarks", JSON.stringify(storageData));
+
+    return { success: true, data: storageData };
+  } catch (error) {
+    return { success: false, error };
+  }
+}
+
+
