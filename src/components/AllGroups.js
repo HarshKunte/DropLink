@@ -10,7 +10,7 @@ function AllGroups() {
          <Router>
         <Routes>
           <Route exact path="/" element={<GroupCards/>}/>          
-          <Route exact path="/group/:id" element={<Group/>}/>          
+          <Route exact path="/group/:name" element={<Group/>}/>          
       </Routes>
       </Router>
     </div>

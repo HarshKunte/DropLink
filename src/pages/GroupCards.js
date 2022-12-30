@@ -12,7 +12,6 @@ function GroupCards() {
         ).length;
         return { noOfBookmarks, ...item };
       });
-      console.log(updatedData);
       setGroupData(updatedData);
     }, []);
     return ( 
@@ -21,7 +20,7 @@ function GroupCards() {
         <label
           htmlFor="group-modal"
           type="button"
-          className="btn btn-ghost btn-sm font-bold float-right text-bgDarkGreen"
+          className="btn btn-ghost btn-sm font-bold sm:float-right text-bgDarkGreen"
         >
           <MdAdd color="inherit" className="w-5 h-5" />
           Create new group
