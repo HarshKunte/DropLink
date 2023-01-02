@@ -27,6 +27,11 @@ function Home() {
 
         <NavBar/>
 
+		<div className='flex flex-col mt-4 sm:mt-0 items-center justify-center text-center'>
+			<p className='sm:text-lg font-bold text-bgDarkGreen'>Welcome to DropLink !!!</p>
+			<p className='text-sm'>Add any link here to save and view it later.</p>
+		</div>
+
         <div className='mt-10'>
         <div className="flex items-center  overflow-x-auto overflow-y-hidden flex-nowrap w-full">
 	<div onClick={()=>changeActiveTab(0)}  className={activeTab==0? `cursor-pointer flex items-center flex-shrink-0 px-5 py-3 space-x-2 border border-b-0 rounded-t-lg` : `cursor-pointer flex items-center flex-shrink-0 px-5 py-3 space-x-2 border-b`}>
@@ -42,7 +47,7 @@ function Home() {
 		</svg>
 		<span>Groups</span>
 	</div>
-	<div  className="flex flex-1 items-center flex-shrink-0 px-5 py-5 space-x-2 border-b rounded-t-lg ">
+	<div  className="flex flex-1 items-center flex-shrink-0 px-5 py-6 space-x-2 border-b rounded-t-lg ">
 		
 	</div>
 	

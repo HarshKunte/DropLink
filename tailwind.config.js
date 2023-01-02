@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors:{
         'bgLightGray': '#E0EDE4',
-        'bgBaseGray':'B4D4C6',
+        'bgBaseGray':'#B4D4C6',
         // 'bgLightGreen':'#9AC8BA',
         'bgLightGreen':'#b4facc',
         'bgBlack':'#091614',
