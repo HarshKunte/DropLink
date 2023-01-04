@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import BookmarkModal from './components/BookmarkModal';
 import GroupModal from './components/GroupModal';
 import { ContextProvider } from './context';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
     <BookmarkModal/>
     <GroupModal/>
     </div>
+    <Toaster/>
     </ContextProvider>
   );
 }

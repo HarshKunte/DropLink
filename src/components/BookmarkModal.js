@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { IoSend } from "react-icons/io5";
 import Context from "../context";
 import { createBookmark, getBookmarks } from "../helper";
 import Loading from "./Loading";
@@ -48,6 +47,12 @@ function Modal() {
       })
       .catch((err) => {
         console.log(err);
+        setSubmitting(false);
+        setName("");
+        setUrl("");
+        if(err.response.status==425){
+          toast.error("Link seems incorrect!!");
+        }else
         toast.error("Something went wrong");
       });
   };
@@ -88,6 +93,7 @@ function Modal() {
                 className="input input-bordered w-full max-w-xs"
                 onChange={(e) => setName(e.target.value)}
                 required
+                maxLength={60}
               />
             </div>
             <div className="form-control w-full max-w-xs">

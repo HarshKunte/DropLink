@@ -27,6 +27,7 @@ function Group() {
       let result = deleteGroup(data.state.id);
       if (result.success) {
         setBookmarks(result.data);
+        toast.success("Group deleted");
         goBack();
       } else {
         console.log(result.error);

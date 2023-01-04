@@ -28,7 +28,7 @@ function Card({ item }) {
     >
       <div className="flex space-x-4">
         <div className="flex space-x-1 w-full items-center justify-between">
-          <label className="text-md font-semibold">{item.name}</label>
+          <label className="text-md truncate font-semibold">{item.name}</label>
           <button
             onClick={(e) => deleteItem(e)}
             type="button"

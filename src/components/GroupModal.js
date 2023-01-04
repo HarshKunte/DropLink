@@ -48,6 +48,7 @@ function GroupModal() {
         ref={modalRef}
         id="group-modal"
         className="modal-toggle"
+        
       />
       <div className="modal">
         <div className="modal-box relative">
@@ -71,6 +72,7 @@ function GroupModal() {
                 className="input input-bordered w-full max-w-xs"
                 onChange={(e)=>setName(e.target.value)}
                 required
+                maxLength={40}
               />
             </div>
             
