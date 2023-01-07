@@ -63,6 +63,22 @@ export function createGroup(data) {
     return { success: false, error };
   }
 }
+
+export function editGroupTitle(data) {
+  try {
+    let storageData = JSON.parse(
+      localStorage.getItem("bookmarks") ||
+        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+    );
+    storageData.groups[ storageData.groups.findIndex(item => item.id == data.id)].name = data.name;
+    localStorage.setItem("bookmarks", JSON.stringify(storageData));
+
+    return { success: true, data: storageData };
+  } catch (error) {
+    return { success: false, error };
+  }
+}
+
 export function deleteGroup(groupId) {
   try {
     let storageData = JSON.parse(

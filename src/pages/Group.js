@@ -1,15 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import Context from "../context";
 import { IoMdArrowBack } from "react-icons/io";
 import { GrFormTrash } from "react-icons/gr";
+import { BiEditAlt } from "react-icons/bi";
 import Empty from "../images/empty_page.svg";
 import { toast } from "react-hot-toast";
-import { deleteGroup } from "../helper";
+import { deleteGroup, editGroupTitle } from "../helper";
 function Group() {
   const data = useLocation();
   const navigate = useNavigate();
+  const inputReference = useRef()
+  const [groupTitle, setGroupTitle] = useState(data.state.name);
+  const [disabled, setDisabled] = useState(true);
   const { bookmarks, setBookmarks } = useContext(Context);
   const [groupBookmarks, setGroupBookmarks] = useState([]);
 
@@ -36,6 +40,21 @@ function Group() {
     }
   }
 
+  // edit group title
+  function editGroupName() {
+    if(groupTitle !== data.state.name){
+      let result = editGroupTitle({id:data.state.id, name:groupTitle})
+      if(result.success){
+        setDisabled(true)
+        setBookmarks(result.data);
+        toast.success("Title updated")
+      }else{
+        console.log(result.error);
+        toast.error("Sorry couldn't update the title !")
+      }
+    }
+  }
+
   useEffect(() => {
     let filteredBookmarks = bookmarks.bookmarks?.filter(
       (item) => item.group == data.state.id
@@ -52,12 +71,24 @@ function Group() {
         <IoMdArrowBack /> Back
       </button>
       <div className="flex space-x-2 items-center">
-        <h2 className="text-3xl capitalize font-extrabold text-bgDarkGreen">
-          {data.state.name}
-        </h2>
+      <input
+          ref={inputReference}
+          type="text"
+          defaultValue={data.state.name}
+          onChange={(e)=>setGroupTitle(e.target.value)}
+          className="text-3xl flex-1 w-fit capitalize font-extrabold text-bgDarkGreen outline-none" 
+          disabled={disabled}
+          onBlur={editGroupName}
+          maxLength={40}
+        />
+        
+        {data.state.id != 0 && (
+          <button onClick={()=>{setDisabled(false); inputReference.current.focus()}} className="btn-ghost">
+            <BiEditAlt className="w-6 h-6" />{" "}
+          </button>
+        )}
         {data.state.id != 0 && (
           <button onClick={deleteGroupButton} className="btn-ghost">
-            {" "}
             <GrFormTrash className="w-6 h-6" />{" "}
           </button>
         )}
