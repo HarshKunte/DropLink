@@ -57,7 +57,7 @@ function Group() {
 
   useEffect(() => {
     let filteredBookmarks = bookmarks.bookmarks?.filter(
-      (item) => item.group == data.state.id
+      (item) => item.group === data.state.id
     );
     setGroupBookmarks(filteredBookmarks);
   }, [bookmarks]);
@@ -82,12 +82,12 @@ function Group() {
           maxLength={40}
         />
         
-        {data.state.id != 0 && (
+        {data.state.id !== 0 && (
           <button onClick={()=>{setDisabled(false); inputReference.current.focus()}} className="btn-ghost">
             <BiEditAlt className="w-6 h-6" />{" "}
           </button>
         )}
-        {data.state.id != 0 && (
+        {data.state.id !== 0 && (
           <button onClick={deleteGroupButton} className="btn-ghost">
             <GrFormTrash className="w-6 h-6" />{" "}
           </button>

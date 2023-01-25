@@ -1,13 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import Context from "../context";
-import { createBookmark, createGroup, getBookmarks } from "../helper";
+import { createGroup, getBookmarks } from "../helper";
 import Loading from "./Loading";
 
 
 function GroupModal() {
   //context
-  const {bookmarks, setBookmarks} = useContext(Context)
+  const { setBookmarks} = useContext(Context)
 
   //using this to close modal after creating todo
   const modalRef = useRef(false);

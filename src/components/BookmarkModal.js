@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import Context from "../context";
 import { createBookmark, getBookmarks } from "../helper";
@@ -50,7 +50,7 @@ function Modal() {
         setSubmitting(false);
         setName("");
         setUrl("");
-        if(err.response.status==425){
+        if(err.response.status===425){
           toast.error("Link seems incorrect!!");
         }else
         toast.error("Something went wrong");
@@ -107,7 +107,7 @@ function Modal() {
                 {bookmarks &&
                   bookmarks.groups?.length > 0 &&
                   bookmarks?.groups.map((item, index) => {
-                    if (index == 0)
+                    if (index === 0)
                       return (
                         <option
                           key={item.id}

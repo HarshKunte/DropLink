@@ -7,7 +7,7 @@ function NavBar() {
 	<div className="container flex justify-between items-center h-12 md:h-16 mx-auto">
 		<ul className="items-stretch  space-x-3 flex">
 			<li className="flex">
-				<a rel="noopener noreferrer" href="#" className="flex text-lg sm:text-xl font-bold items-center pr-4 ">
+				<a rel="noopener noreferrer" href="/" className="flex text-lg sm:text-xl font-bold items-center pr-4 ">
 					 DropLink</a>
 			</li>
 		</ul>

@@ -3,12 +3,12 @@ import GroupCard from "../components/GroupCard";
 import { MdAdd } from "react-icons/md";
 import Context from "../context";
 function GroupCards() {
-    const { bookmarks, setBookmarks } = useContext(Context);
+    const { bookmarks } = useContext(Context);
     const [groupData, setGroupData] = useState([]);
     useEffect(() => {
       let updatedData = bookmarks.groups?.map((item) => {
         let noOfBookmarks = bookmarks.bookmarks.filter(
-          (bm) => bm.group == item.id
+          (bm) => bm.group === item.id
         ).length;
         return { noOfBookmarks, ...item };
       });

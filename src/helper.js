@@ -70,7 +70,7 @@ export function editGroupTitle(data) {
       localStorage.getItem("bookmarks") ||
         '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
     );
-    storageData.groups[ storageData.groups.findIndex(item => item.id == data.id)].name = data.name;
+    storageData.groups[ storageData.groups.findIndex(item => item.id === data.id)].name = data.name;
     localStorage.setItem("bookmarks", JSON.stringify(storageData));
 
     return { success: true, data: storageData };
@@ -86,8 +86,8 @@ export function deleteGroup(groupId) {
         '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
     );
     console.log(storageData);
-    let updatedBookmarks = storageData.bookmarks.filter(bookmark => bookmark.group != groupId)
-    let updatedGroups = storageData.groups.filter(group => group.id != groupId)
+    let updatedBookmarks = storageData.bookmarks.filter(bookmark => bookmark.group !== groupId)
+    let updatedGroups = storageData.groups.filter(group => group.id !== groupId)
     storageData.bookmarks = updatedBookmarks;
     storageData.groups = updatedGroups;
 

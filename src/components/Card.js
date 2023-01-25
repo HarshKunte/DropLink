@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, {  useContext } from "react";
 import { toast } from "react-hot-toast";
 import { GrFormTrash } from "react-icons/gr";
 import Context from "../context";
@@ -42,13 +42,13 @@ function Card({ item }) {
         {item.image ? (
           <img
             src={item?.image}
-            alt=""
+            alt="link thumbnail"
             className="object-cover w-full md:h-36 lg:h-36 xl:h-44 mb-4 "
           />
         ) : (
           <img
             src={Placeholder}
-            alt="placeholder image"
+            alt="placeholder pic"
             className="object-cover w-full md:h-36 lg:h-36 xl:h-44 mb-4 "
           />
         )}
