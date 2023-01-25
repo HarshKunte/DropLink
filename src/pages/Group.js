@@ -60,7 +60,7 @@ function Group() {
       (item) => item.group === data.state.id
     );
     setGroupBookmarks(filteredBookmarks);
-  }, [bookmarks]);
+  }, [bookmarks, data]);
 
   return (
     <div className="px-4 sm:px-6">

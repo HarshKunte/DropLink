@@ -18,7 +18,7 @@ function Home() {
 			toast.error("Something went wrong")
 		}
 			
-	},[])
+	})
 
 	const changeActiveTab = (id)=>{
 		setActiveTab(id)
