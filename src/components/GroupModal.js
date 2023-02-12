@@ -70,7 +70,7 @@ function GroupModal() {
                 placeholder="Type here"
                 value={name}
                 className="input input-bordered w-full max-w-xs"
-                onChange={(e)=>setName(e.target.value)}
+                onChange={(e)=>setName(e.target.value.trim())}
                 required
                 maxLength={40}
               />

@@ -76,7 +76,7 @@ function Group() {
           type="text"
           defaultValue={data.state.name}
           onChange={(e)=>setGroupTitle(e.target.value)}
-          className="text-3xl flex-1 w-fit capitalize font-extrabold text-bgDarkGreen outline-none" 
+          className="text-xl text-3xl w-full bg-white capitalize font-extrabold bg-none text-bgDarkGreen outline-none truncate" 
           disabled={disabled}
           onBlur={editGroupName}
           maxLength={40}

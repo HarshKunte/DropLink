@@ -9,16 +9,19 @@ function Card({ item }) {
 
   //delete Bookmark
   function deleteItem(event) {
-    event.preventDefault();
     event.stopPropagation();
-
-    let result = deleteBookmark(item.id);
-    if (result.success) setBookmarks(result.data);
-    else {
-      console.log(result.error);
-      toast.error("Something went wrong");
+    event.preventDefault();
+    if(window.confirm("Do you want to delete this bookmark??")){
+      
+      let result = deleteBookmark(item.id);
+      if (result.success) setBookmarks(result.data);
+      else {
+        console.log(result.error);
+        toast.error("Something went wrong");
+      }
     }
   }
+
   return (
     <a
       href={item.url}
