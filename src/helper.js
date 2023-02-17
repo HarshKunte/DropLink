@@ -6,7 +6,7 @@ export function createBookmark(data) {
 
     let storageData = JSON.parse(
       localStorage.getItem("bookmarks") ||
-        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+        '{"bookmarks":[], "groups":[{"name":"others", "id":-1}]}'
     );
     storageData.bookmarks.push(item);
     localStorage.setItem("bookmarks", JSON.stringify(storageData));
@@ -20,7 +20,7 @@ export function deleteBookmark(itemId) {
   try {
     let storageData = JSON.parse(
       localStorage.getItem("bookmarks") ||
-        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+        '{"bookmarks":[], "groups":[{"name":"others", "id":-1}]}'
     );
     storageData.bookmarks.splice(
       storageData.bookmarks.findIndex((bookmark) => bookmark.id === itemId),
@@ -38,7 +38,7 @@ export function getBookmarks() {
   try {
     let storageData = JSON.parse(
       localStorage.getItem("bookmarks") ||
-        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+        '{"bookmarks":[], "groups":[{"name":"others", "id":-1}]}'
     );
 
     return { success: true, data: storageData };
@@ -53,7 +53,7 @@ export function createGroup(data) {
 
     let storageData = JSON.parse(
       localStorage.getItem("bookmarks") ||
-        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+        '{"bookmarks":[], "groups":[{"name":"others", "id":-1}]}'
     );
     storageData.groups.push(item);
     localStorage.setItem("bookmarks", JSON.stringify(storageData));
@@ -68,7 +68,7 @@ export function editGroupTitle(data) {
   try {
     let storageData = JSON.parse(
       localStorage.getItem("bookmarks") ||
-        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+        '{"bookmarks":[], "groups":[{"name":"others", "id":-1}]}'
     );
     storageData.groups[ storageData.groups.findIndex(item => item.id === data.id)].name = data.name;
     localStorage.setItem("bookmarks", JSON.stringify(storageData));
@@ -83,7 +83,7 @@ export function deleteGroup(groupId) {
   try {
     let storageData = JSON.parse(
       localStorage.getItem("bookmarks") ||
-        '{"bookmarks":[], "groups":[{"name":"others", "id":0}]}'
+        '{"bookmarks":[], "groups":[{"name":"others", "id":-1}]}'
     );
     console.log(storageData);
     let updatedBookmarks = storageData.bookmarks.filter(bookmark => bookmark.group !== groupId)

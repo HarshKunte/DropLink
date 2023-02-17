@@ -7,7 +7,8 @@ import { GrFormTrash } from "react-icons/gr";
 import { BiEditAlt } from "react-icons/bi";
 import Empty from "../images/empty_page.svg";
 import { toast } from "react-hot-toast";
-import { deleteGroup, editGroupTitle } from "../helper";
+import { deleteGroup, editGroupTitle, getBookmarks } from "../helper";
+import NavBar from "../components/NavBar";
 function Group() {
   const data = useLocation();
   const navigate = useNavigate();
@@ -56,6 +57,20 @@ function Group() {
   }
 
   useEffect(() => {
+    console.log(data.state.id);
+    if(!data.state.id){
+        goBack()
+    }
+    if(Object.keys(bookmarks).length ==0){
+      //fetch bookmarks from localstorage
+      let result = getBookmarks();
+      if(result.success)
+      setBookmarks(result.data)
+      else{
+        console.log(result.error);
+        toast.error("Something went wrong")
+      }
+    }
     let filteredBookmarks = bookmarks.bookmarks?.filter(
       (item) => item.group === data.state.id
     );
@@ -63,14 +78,18 @@ function Group() {
   }, [bookmarks, data]);
 
   return (
+    <div className='px-4 md:px-10 lg:px-28 xl:px-32 text-black'>
+
+        <NavBar/>
     <div className="px-4 sm:px-6">
+      
+      <div className="flex space-x-2 items-center mt-8">
       <button
         onClick={goBack}
-        className="flex items-center hover:underline rounded-lg mb-8  mt-5"
+        className=" "
       >
-        <IoMdArrowBack /> Back
+        <IoMdArrowBack className="h-5 w-5"/> 
       </button>
-      <div className="flex space-x-2 items-center">
       <input
           ref={inputReference}
           type="text"
@@ -94,7 +113,7 @@ function Group() {
         )}
       </div>
       <div className="divider my-1"></div>
-      {groupBookmarks?.length === 0 ?
+      {!groupBookmarks || groupBookmarks?.length === 0 ?
         (<div className="flex flex-col w-full h-full justify-center items-center">
           <img alt="no bookmarks" className="h-32 sm:h-40 lg:h-52 mt-16 sm:mt-10 lg:mt-16" src={Empty} />
           <p className="text-center mt-8 md:mt-10 text-base md:text-lg font-sans">
@@ -107,6 +126,7 @@ function Group() {
             ))}
           </div>
         )}
+    </div>
     </div>
   );
 }

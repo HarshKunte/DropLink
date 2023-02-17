@@ -14,7 +14,7 @@ function Modal() {
 
   //states
   const [url, setUrl] = useState("");
-  const [group, setGroup] = useState(0);
+  const [group, setGroup] = useState(-1);
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
 

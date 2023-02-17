@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import AllBookmarks from '../components/AllBookmarks';
 import AllGroups from '../components/AllGroups';
 import NavBar from '../components/NavBar';
 import Context from '../context';
 import { getBookmarks } from '../helper';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+
 function Home() {
 	const {setBookmarks} = useContext(Context);
 	const [activeTab, setActiveTab] = useState(0);
+	const navigate = useNavigate()
 	useEffect(()=>{
 		//fetch bookmarks from localstorage
 		let result = getBookmarks();
@@ -18,10 +22,16 @@ function Home() {
 			toast.error("Something went wrong")
 		}
 			
-	})
+	},[])
 
 	const changeActiveTab = (id)=>{
 		setActiveTab(id)
+		if(id == 0){
+			navigate('/')
+		}
+		else if(id == 1){
+			navigate('/groups')
+		}
 	}
     return ( <div className='px-4 md:px-10 lg:px-28 xl:px-32 text-black'>
 
@@ -32,7 +42,7 @@ function Home() {
 			<p className='text-sm'>Add any link here to save and view it later.</p>
 		</div>
 
-        <div className='mt-10'>
+        <div className='mt-6'>
         <div className="flex items-center  overflow-x-auto overflow-y-hidden flex-nowrap w-full">
 	<div onClick={()=>changeActiveTab(0)}  className={activeTab===0? `cursor-pointer flex items-center flex-shrink-0 px-5 py-3 space-x-2 border border-b-0 rounded-t-lg` : `cursor-pointer flex items-center flex-shrink-0 px-5 py-3 space-x-2 border-b`}>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -52,12 +62,13 @@ function Home() {
 	</div>
 	
 </div>
-		{
-			activeTab===0 &&  <AllBookmarks/>
-		}
-		{
-			activeTab===1 &&  <AllGroups/>
-		}
+      
+        <Routes>
+          <Route exact path="/" element={<AllBookmarks/>}/>          
+          <Route  path="/groups" element={<AllGroups/>}/>          
+      </Routes>
+      
+
         </div>
 
 

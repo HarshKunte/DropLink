@@ -1,11 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import GroupCard from "../components/GroupCard";
 import { MdAdd } from "react-icons/md";
+import { getBookmarks } from '../helper';
 import Context from "../context";
+import { toast } from "react-hot-toast";
 function GroupCards() {
-    const { bookmarks } = useContext(Context);
+    const { bookmarks, setBookmarks } = useContext(Context);
     const [groupData, setGroupData] = useState([]);
     useEffect(() => {
+      if(!bookmarks){
+          //fetch bookmarks from localstorage
+          let result = getBookmarks();
+          if(result.success)
+          setBookmarks(result.data)
+          else{
+            console.log(result.error);
+            toast.error("Something went wrong")
+          }
+      }
       let updatedData = bookmarks.groups?.map((item) => {
         let noOfBookmarks = bookmarks.bookmarks.filter(
           (bm) => bm.group === item.id
@@ -28,7 +40,7 @@ function GroupCards() {
       </div>
 
       <div className="flex flex-wrap mt-16 justify-evenly md:justify-start">
-        {groupData.map((group) => (
+        {groupData?.map((group) => (
           <GroupCard key={group.id} item={group} />
         ))}
       </div>

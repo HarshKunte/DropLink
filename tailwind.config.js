@@ -8,6 +8,7 @@ module.exports = {
         'bgLightGray': '#E0EDE4',
         'bgBaseGray':'#B4D4C6',
         // 'bgLightGreen':'#9AC8BA',
+        'bgCardBg':'#effff8',
         'bgLightGreen':'#b4facc',
         'bgBlack':'#091614',
         'bgDarkGreen':'#34594b'
