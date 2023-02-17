@@ -16,6 +16,21 @@ export function createBookmark(data) {
     return { success: false, error };
   }
 }
+export function updateBookmark(data, id) {
+  try {
+    let storageData = JSON.parse(
+      localStorage.getItem("bookmarks") ||
+        '{"bookmarks":[], "groups":[{"name":"others", "id":-1}]}'
+    );
+    let updatedItem = {id, ...data}
+    storageData.bookmarks[ storageData.bookmarks.findIndex(item => item.id === id)] = updatedItem;
+    localStorage.setItem("bookmarks", JSON.stringify(storageData));
+
+    return { success: true, data: storageData };
+  } catch (error) {
+    return { success: false, error };
+  }
+}
 export function deleteBookmark(itemId) {
   try {
     let storageData = JSON.parse(

@@ -6,7 +6,9 @@ export function ContextProvider({children}){
 
     const [bookmarks, setBookmarks] = useState({})
 
-    return <Context.Provider value={{bookmarks, setBookmarks}}>
+    const [editingBookmark, setEditingBookmark] = useState(null)
+
+    return <Context.Provider value={{bookmarks, setBookmarks, editingBookmark, setEditingBookmark}}>
         {children}
     </Context.Provider>
 }

@@ -1,11 +1,12 @@
 import React, {  useContext } from "react";
 import { toast } from "react-hot-toast";
 import { GrFormTrash } from "react-icons/gr";
+import { FiEdit3 } from "react-icons/fi";
 import Context from "../context";
 import { deleteBookmark } from "../helper";
 import Placeholder from "../images/card_placeholder.svg";
 function Card({ item }) {
-  const { setBookmarks } = useContext(Context);
+  const { setEditingBookmark, setBookmarks } = useContext(Context);
 
   //delete Bookmark
   function deleteItem(event) {
@@ -22,6 +23,11 @@ function Card({ item }) {
     }
   }
 
+  function  updateItem(event){
+    event.stopPropagation();
+     setEditingBookmark(item)
+  }
+
   return (
     <a
       href={item.url}
@@ -32,13 +38,23 @@ function Card({ item }) {
       <div className="flex space-x-4">
         <div className="flex space-x-1 w-full items-center justify-between">
           <label className="text-md truncate font-semibold">{item.name}</label>
+          <div className="flex items-center">
+          <label htmlFor="my-modal-3"
+            onClick={(e) => updateItem(e)}
+            type="button"
+            className="w-10 h-10 flex cursor-pointer text-bgDarkGreen justify-center items-center  rounded-full btn-ghost"
+          >
+            <FiEdit3 color="bgDarkGreen" className="w-5 h-5" />
+          </label>
           <button
             onClick={(e) => deleteItem(e)}
             type="button"
-            className="w-10 h-10 flex text-white justify-center items-center  rounded-full btn-ghost"
+            className="w-10 h-10 flex text-bgDarkGreen justify-center items-center  rounded-full btn-ghost"
           >
             <GrFormTrash color="bgDarkGreen" className="w-5 h-5" />
           </button>
+          
+          </div>
         </div>
       </div>
       <div>
