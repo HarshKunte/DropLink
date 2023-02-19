@@ -111,7 +111,6 @@ function Modal() {
         let result = getBookmarks();
         if (result.success) {
           setBookmarks(result.data);
-
           modalRef.current.checked = false;
         } else {
           console.log(result.error);

@@ -20,7 +20,7 @@ function GroupCards() {
       }
       let updatedData = bookmarks.groups?.map((item) => {
         let noOfBookmarks = bookmarks.bookmarks.filter(
-          (bm) => bm.group === item.id
+          (bm) => bm.group == item.id
         ).length;
         return { noOfBookmarks, ...item };
       });

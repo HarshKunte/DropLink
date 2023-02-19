@@ -72,6 +72,7 @@ function Card({ item }) {
           />
         )}
         <h2 className="mb-1 text-xs font-semibold ">{item?.title}</h2>
+
       </div>
     </a>
   );

@@ -72,7 +72,7 @@ function Group() {
       }
     }
     let filteredBookmarks = bookmarks.bookmarks?.filter(
-      (item) => item.group === data.state.id
+      (item) => item.group == data.state.id
     );
     setGroupBookmarks(filteredBookmarks);
   }, [bookmarks, data]);
