@@ -27,7 +27,7 @@ function SearchBar({isSearching, setIsSearching, filteredBookmarks, setFilteredB
       };
 
     return(
-        <div className="form-control mt-10 mb-4">
+        <div className="form-control mt-10 mb-4 w-fit mx-auto sm:mx-0">
         <div className="input-group input-group-sm">
           <input
             type="text"

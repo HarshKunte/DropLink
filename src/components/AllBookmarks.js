@@ -33,7 +33,7 @@ function AllBookmarks() {
         setFilteredBookmarks={setFilteredBookmarks}
       />
 
-      <div className="flex flex-wrap py-10 justify-start">
+      <div className="flex flex-wrap py-10 justify-center lg:justify-start">
         {isSearching && filteredBookmarks.length != 0
           ? filteredBookmarks.map((data) => <Card key={data.id} item={data} />)
           : bookmarks.bookmarks?.map((data) => (
