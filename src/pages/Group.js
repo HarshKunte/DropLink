@@ -9,6 +9,9 @@ import Empty from "../images/empty_page.svg";
 import { toast } from "react-hot-toast";
 import { deleteGroup, editGroupTitle, getBookmarks } from "../helper";
 import NavBar from "../components/NavBar";
+import { fadeAnimations } from "../animations";
+import { motion } from "framer-motion";
+
 function Group() {
   const data = useLocation();
   const navigate = useNavigate();
@@ -78,10 +81,14 @@ function Group() {
   }, [bookmarks, data]);
 
   return (
-    <div className='px-4 md:px-10 lg:px-28 xl:px-32 text-black'>
+    <div
+     className='px-4 md:px-10 lg:px-28 xl:px-32 text-black'>
 
         <NavBar/>
-    <div className="px-4 sm:px-6">
+    <motion.div
+    initial={fadeAnimations.hidden}
+    animate={fadeAnimations.show}
+     className="px-4 sm:px-6">
       
       <div className="flex space-x-2 items-center mt-8">
       <button
@@ -120,13 +127,13 @@ function Group() {
             Looks like you dont have any bookmarks yet!
           </p>
         </div>):(
-          <div className="flex flex-wrap py-10 justify-start">
+          <motion.div layout className="flex flex-wrap py-10 justify-start">
             {groupBookmarks?.map((data) => (
               <Card key={data.id} item={data} />
             ))}
-          </div>
+          </motion.div>
         )}
-    </div>
+    </motion.div>
     </div>
   );
 }

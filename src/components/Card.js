@@ -5,6 +5,8 @@ import { FiEdit3 } from "react-icons/fi";
 import Context from "../context";
 import { deleteBookmark } from "../helper";
 import Placeholder from "../images/card_placeholder.svg";
+import {motion} from 'framer-motion'
+import { fadeAnimations } from "../animations";
 function Card({ item }) {
   const { setEditingBookmark, setBookmarks } = useContext(Context);
 
@@ -29,7 +31,10 @@ function Card({ item }) {
   }
 
   return (
-    <a
+    <motion.a
+    layout
+	 initial={fadeAnimations.hidden}
+   animate={fadeAnimations.show}
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
@@ -74,7 +79,7 @@ function Card({ item }) {
         <h2 className="mb-1 text-xs font-semibold ">{item?.title}</h2>
 
       </div>
-    </a>
+    </motion.a>
   );
 }
 

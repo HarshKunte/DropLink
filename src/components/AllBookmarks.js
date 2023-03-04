@@ -3,6 +3,8 @@ import Card from "./Card";
 import Context from "../context";
 import Empty from "../images/empty_page.svg";
 import SearchBar from "./SearchBar";
+import { motion } from "framer-motion";
+
 function AllBookmarks() {
   const { bookmarks } = useContext(Context);
 
@@ -33,13 +35,13 @@ function AllBookmarks() {
         setFilteredBookmarks={setFilteredBookmarks}
       />
 
-      <div className="flex flex-wrap py-10 justify-center lg:justify-start">
+      <motion.div layout className="flex flex-wrap py-10 justify-center lg:justify-start">
         {isSearching && filteredBookmarks.length != 0
           ? filteredBookmarks.map((data) => <Card key={data.id} item={data} />)
           : bookmarks.bookmarks?.map((data) => (
               <Card key={data.id} item={data} />
             ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
